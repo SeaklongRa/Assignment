@@ -2,19 +2,37 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import SumValue from '../views/SumValue.vue'
 import AWeekOne from '../views/AWeekOne.vue'
+import ClassAndStyle from '../views/ClassAndStyle.vue'
+import TableData from '../views/TableData.vue'
+import VforComponent from '../views/VforComponent.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/week',
     name: 'aweekone',
     component: AWeekOne
   },
   {
-    path: '/src/views/SumValue.vue',
+    path: '/sum',
     name: 'sumvalue',
     component: SumValue
+  },
+  {
+    path: '/class',
+    name: 'classandstyle',
+    component: ClassAndStyle
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: TableData
+  },
+  {
+    path: '/',
+    name: 'Vfor',
+    component: VforComponent
   }
 ]
 

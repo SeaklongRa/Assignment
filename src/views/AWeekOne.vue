@@ -14,14 +14,14 @@
         <v-row class="pt-10">
           <v-col cols="6">
             <l-button
-              @click="result++"
+              @click="counter++"
               class="float-right"
             >
               Add Value
             </l-button>
           </v-col>
           <v-col cols="6">
-            <l-button @click="result--">Subtract</l-button>
+            <l-button @click="counter--">Subtract</l-button>
           </v-col>
         </v-row>
         <v-banner
@@ -30,7 +30,7 @@
           rounded
           class="mt-5 mx-8 text-center"
         >
-          <span class="text-h6">Counter Value: {{ result }}</span>
+          <span class="text-h6">Counter Value: {{ counter }}</span>
         </v-banner>
         <v-row class="mx-5 mt-5">
           <v-col cols="6">
@@ -49,7 +49,7 @@
           </v-col>
         </v-row>
         <div class="text-center">
-          <l-button @click="reset">Reset Result</l-button>
+          <l-button @click="reset">Reset counter</l-button>
         </div>
         <v-banner
           color="primary"
@@ -73,9 +73,10 @@ export default {
 data() {
   return {
     title: 'Components Basic',
-    result: 0,
+    counter: 0,
     firstName: '',
-    lastName: ''
+    lastName: '',
+    total: ''
   }
 },
 components: {
@@ -84,23 +85,36 @@ components: {
 },
 methods: {
   reset() {
-    this.result = 0
+    this.counter = 0
     this.firstName = ''
     this.lastName = ''
+  },
+  counterValue(value) {
+    if(value === 'add') {
+      this.counter++
+      if(this.counter > 10) {
+        this.counter = 0
+        console.log('Value is reset')
+      }
+    }
+    else {
+      this.counter--
+      if(this.counter < -10) {
+        this.counter = 0
+        console.log('Value is reset')
+      }
+    }
   }
 },
 computed: {
   fullName () {
-    if(this.firstName === '' && this.lastName === '') {
-      return
-    }
     return this.firstName + ' ' + this.lastName
   }
 },
 watch: {
-  result () {
-    if(this.result > 10 || this.result < -10) {
-      this.result = 0
+  counter () {
+    if(this.counter > 10 || this.counter < -10) {
+      this.counter = 0
       console.log('Value is reset')
     }
   },
