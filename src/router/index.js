@@ -5,6 +5,8 @@ import AWeekOne from '../views/AWeekOne.vue'
 import ClassAndStyle from '../views/ClassAndStyle.vue'
 import TableData from '../views/TableData.vue'
 import VforComponent from '../views/VforComponent.vue'
+import EventHandling from '../views/EventHandling.vue'
+import AWeekTwo from '../views/AWeekTwo.vue'
 
 Vue.use(VueRouter)
 
@@ -30,9 +32,19 @@ const routes = [
     component: TableData
   },
   {
-    path: '/',
-    name: 'Vfor',
+    path: '/vfor',
+    name: 'vfor',
     component: VforComponent
+  },
+  {
+    path: '/event',
+    name: 'event',
+    component: EventHandling
+  },
+  {
+    path: '/',
+    name: 'Week',
+    component: AWeekTwo
   }
 ]
 

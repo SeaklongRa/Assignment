@@ -3,6 +3,7 @@
     v-bind="$attrs"
     v-on="$listeners"
     :label="label"
+    :prepend-inner-icon="left_icon"
     outlined
     dense
   >
@@ -16,6 +17,10 @@ export default {
     label: {
       type: String,
       default: () => "Number"
+    },
+    left_icon: {
+      type: String,
+      default: () => ''
     }
   }
 }

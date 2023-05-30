@@ -3,6 +3,9 @@
     v-bind="$attrs"
     v-on="$listeners"
     :color="color"
+    :outlined="outlined"
+    block
+    dark
   >
     <slot></slot>
   </v-btn>
@@ -13,7 +16,11 @@ export default {
   props: {
     color: {
       type: String,
-      default: () => 'primary'
+      default: () => 'blue'
+    },
+    outlined: {
+      type: Boolean,
+      default: () => false
     }
   }
 }

@@ -22,6 +22,7 @@
             <td>
               <span v-if="item.calories < 200" class="red--text">0</span>
               <span v-else>{{ item.calories }}</span>
+              <v-btn fab small class="ml-2">Add</v-btn>
             </td>
           </tr>
         </tbody>
