@@ -6,7 +6,8 @@
           <v-col cols="4">
             Week-2
           </v-col>
-          <v-col cols="4" class="text-center">
+          <v-col 
+            cols="4" class="text-center">
             Add Cards
           </v-col>
           <v-col cols="4" class="text-right">
@@ -50,12 +51,22 @@
               </l-button>
               <v-row>
                 <v-col cols="6" class="mt-3 pr-1">
-                  <l-button
-                    outlined
-                    @click="hideCard"
+                  <v-badge
+                    :content="count"
+                    :value="count"
+                    color="red"
+                    overlap
+                    left
                   >
-                    Hide
-                  </l-button>
+                    <l-button
+                      @click="hideCardAll"
+                      :color="count > 0 ? 'red' : 'blue'"
+                      class="px-8"
+                      outlined
+                    >
+                      Hide
+                    </l-button>
+                  </v-badge>
                 </v-col>
                 <v-col cols="6" class="mt-3 pl-1">
                   <l-button @click="showCard">
@@ -88,7 +99,7 @@
                   :price="card.price"
                   :is-hide="card.isHide"
                   @remove="deleteIndex(index)"
-                  @hide="card.isHide = false"
+                  @hide="hideCard(card)"
                 >
                 </base-card>
               </div>
@@ -114,6 +125,7 @@ export default {
   },
   data () {
     return {
+      count: 0,
       highlight: false,
       form: {
         password: '',
@@ -148,12 +160,22 @@ export default {
   methods: {
     showCard () {
       this.todoCard.forEach(item => item.isHide = true)
+      this.count = 0
     },
-    hideCard () {
-      this.todoCard.forEach(item => item.isHide = false)
+    hideCardAll () {
+      this.count = 0
+      this.todoCard.forEach(item => {
+        item.isHide = false
+        this.count++
+      })
+    },
+    hideCard (val) {
+      val.isHide = false
+      this.count++
     },
     deleteCard () {
       this.todoCard.splice(0, this.todoCard.length)
+      this.count = 0
     },
     deleteIndex (value) {
       this.todoCard.splice(value, 1)
@@ -170,13 +192,6 @@ export default {
         this.newCard.price = null
         this.$refs.form.resetValidation()
       }
-    }
-  },
-  computed: {
-    checkCard () {
-      return this.todoCard.find(card => {
-        return card.isHide === false
-      }).checkCard
     }
   }
 }

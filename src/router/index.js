@@ -7,6 +7,7 @@ import TableData from '../views/TableData.vue'
 import VforComponent from '../views/VforComponent.vue'
 import EventHandling from '../views/EventHandling.vue'
 import AWeekTwo from '../views/AWeekTwo.vue'
+import TestComponent from '../views/TestComponent.vue'
 
 Vue.use(VueRouter)
 
@@ -45,6 +46,11 @@ const routes = [
     path: '/',
     name: 'Week',
     component: AWeekTwo
+  },
+  {
+    path: '/test',
+    name: 'Test',
+    component: TestComponent
   }
 ]
 

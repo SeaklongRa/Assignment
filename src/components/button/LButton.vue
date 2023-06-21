@@ -7,7 +7,9 @@
     block
     dark
   >
+    <v-icon v-if="iconLeft">{{ iconLeft }}</v-icon>
     <slot></slot>
+    <v-icon v-if="iconRight">{{ iconRight }}</v-icon>
   </v-btn>
 </template>
 
@@ -21,6 +23,14 @@ export default {
     outlined: {
       type: Boolean,
       default: () => false
+    },
+    iconLeft: {
+      type: String,
+      default: () => ''
+    },
+    iconRight: {
+      type: String,
+      default: () => ''
     }
   }
 }
